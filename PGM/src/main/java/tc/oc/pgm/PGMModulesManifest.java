@@ -12,6 +12,7 @@ import tc.oc.pgm.flag.FlagManifest;
 import tc.oc.pgm.itemkeep.ItemKeepManifest;
 import tc.oc.pgm.kits.KitManifest;
 import tc.oc.pgm.lane.LaneManifest;
+import tc.oc.pgm.blitz.BlitzManifest;
 import tc.oc.pgm.loot.LootManifest;
 import tc.oc.pgm.modes.ObjectiveModeManifest;
 import tc.oc.pgm.physics.PlayerPhysicsManifest;
@@ -64,5 +65,6 @@ public class PGMModulesManifest extends HybridManifest {
         install(new RaindropManifest());
         install(new ExperienceManifest());
         install(new ObjectiveModeManifest());
+        install(new BlitzManifest());
     }
 }
