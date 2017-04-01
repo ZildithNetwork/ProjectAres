@@ -19,6 +19,10 @@ public class Links {
         return new URI("http", HOST, path, null);
     }
 
+    public static URI shopUri() throws URISyntaxException {
+        return new URI("http", SHOP_HOST, null, null);
+    }
+
     public static URI homeUriSafe(String path) {
         return ExceptionUtils.propagate(() -> homeUri(path));
     }
@@ -39,8 +43,12 @@ public class Links {
         return homeLinkSafe("/");
     }
 
+    public static BaseComponent shopLink(boolean compact) throws URISyntaxException {
+        return new LinkComponent(shopUri(), compact);
+    }
+
     public static BaseComponent shopLink() {
-        return homeLinkSafe("/shop");
+        return ExceptionUtils.propagate(() -> shopLink(true));
     }
 
     public static BaseComponent appealLink() {
