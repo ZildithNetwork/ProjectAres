@@ -1,6 +1,5 @@
 package tc.oc.api.docs.virtual;
 
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -83,6 +82,8 @@ public interface UserDoc {
     interface Login extends Identity, Locale, Trophies, License.Complete {
         int raindrops();
         int experience();
+        int maptokens();
+        int mutationtokens();
         String mc_last_sign_in_ip();
         @Nullable Date trial_expires_at();
         Map<String, Map<String, Boolean>> mc_permissions_by_realm();

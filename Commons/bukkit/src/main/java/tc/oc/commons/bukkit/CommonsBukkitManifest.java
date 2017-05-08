@@ -86,6 +86,7 @@ import tc.oc.commons.bukkit.ticket.TicketBooth;
 import tc.oc.commons.bukkit.ticket.TicketCommands;
 import tc.oc.commons.bukkit.ticket.TicketDisplay;
 import tc.oc.commons.bukkit.ticket.TicketListener;
+import tc.oc.commons.bukkit.tokens.TokenManifest;
 import tc.oc.commons.bukkit.trophies.TrophyCase;
 import tc.oc.commons.bukkit.trophies.TrophyCommands;
 import tc.oc.commons.bukkit.users.JoinMessageManifest;
@@ -122,6 +123,7 @@ public final class CommonsBukkitManifest extends HybridManifest {
         install(new RaindropManifest());
         install(new ExperienceManifest());
         install(new PrestigeManifest());
+        install(new TokenManifest());
         install(new PunishmentManifest());
 
         // These are already bound as facets, so they only need to be exposed

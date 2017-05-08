@@ -98,6 +98,16 @@ class OCNUserService extends HttpModelService<User, UserDoc.Partial> implements 
     }
 
     @Override
+    public ListenableFuture<UserUpdateResponse> creditMaptokens(UserId userId, CreditMaptokensRequest request) {
+        return handleUserUpdate(client().post(memberUri(userId, "credit_maptokens"), request, UserUpdateResponse.class, HttpOption.INFINITE_RETRY));
+    }
+
+    @Override
+    public ListenableFuture<UserUpdateResponse> creditMutationtokens(UserId userId, CreditMutationtokensRequest request) {
+        return handleUserUpdate(client().post(memberUri(userId, "credit_mutationtokens"), request, UserUpdateResponse.class, HttpOption.INFINITE_RETRY));
+    }
+
+    @Override
     public <T extends UserDoc.Partial> ListenableFuture<User> update(UserId userId, T update) {
         return update(userId.player_id(), update);
     }
