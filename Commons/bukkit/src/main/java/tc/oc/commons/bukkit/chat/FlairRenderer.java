@@ -34,7 +34,6 @@ public class FlairRenderer implements PartialNameRenderer {
     }
 
     public Stream<String> getFlairs(Identity identity) {
-
         final UserDoc.Identity user;
         if(identity.getPlayerId() instanceof UserDoc.Identity) {
             // Flair may already be stashed inside the Identity
@@ -54,8 +53,7 @@ public class FlairRenderer implements PartialNameRenderer {
                    .map(flair -> flair.text);
     }
 
-    @Override
-    public BaseComponent getComponentName(Identity identity, NameType type) {
-        return Components.fromLegacyText(getLegacyName(identity, type));
+    public int getNumberOfFlairs(Identity identity) {
+        return (int) getFlairs(identity).count();
     }
 }
