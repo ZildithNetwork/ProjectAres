@@ -11,13 +11,13 @@ public class GeneralFormatter {
 
     @Inject private GeneralFormatter() {}
 
-    private final Component brandName = new Component("PGM", GOLD);
+    private final Component brandName = new Component("Zildith Network", PURPLE);
 
     public BaseComponent brandName() {
         return brandName;
     }
 
     public String publicHostname() {
-        return "localhost"; // TODO: configurable
+        return "zildith.net";
     }
 }
