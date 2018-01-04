@@ -11,7 +11,7 @@ public class GeneralFormatter {
 
     @Inject private GeneralFormatter() {}
 
-    private final Component brandName = new Component("Zildith Network", PURPLE);
+    private final Component brandName = new Component("Zildith Network", DARK_PURPLE);
 
     public BaseComponent brandName() {
         return brandName;
