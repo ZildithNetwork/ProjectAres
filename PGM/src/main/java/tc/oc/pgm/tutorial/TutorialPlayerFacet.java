@@ -34,7 +34,7 @@ import tc.oc.commons.bukkit.event.ObserverKitApplyEvent;
 
 public class TutorialPlayerFacet implements MatchPlayerFacet, Listener {
 
-    private static final Material TUTORIAL_ITEM = Material.EMERALD;
+    private static final Material TUTORIAL_ITEM = Material.BOOK;
     private static final int TUTORIAL_SLOT = 3;
 
     private final Player bukkit;
@@ -104,7 +104,7 @@ public class TutorialPlayerFacet implements MatchPlayerFacet, Listener {
         final ItemStack item = new ItemStack(TUTORIAL_ITEM);
         final ItemMeta meta = item.getItemMeta();
         meta.addItemFlags(ItemFlag.values());
-        meta.setDisplayName(renderer.renderLegacy(new Component(new TranslatableComponent("tutorial.displayName"), ChatColor.GOLD, ChatColor.BOLD), viewer));
+        meta.setDisplayName(renderer.renderLegacy(new Component(new TranslatableComponent("tutorial.displayName"), ChatColor.AQUA, ChatColor.BOLD), viewer));
         meta.setLore(ImmutableList.of(renderer.renderLegacy(new Component(new TranslatableComponent("tutorial.tooltip", mapInfo.getColoredName()), ChatColor.WHITE), viewer)));
         item.setItemMeta(meta);
         return item;
