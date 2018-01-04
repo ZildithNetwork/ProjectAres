@@ -42,7 +42,7 @@ public class OfficialChannel extends SimpleChannel implements Commands {
     public static final String PERM_SEND = PERM_NODE + ".send";
     public static final String PERM_RECEIVE = PERM_NODE + ".receive";
 
-    public static final String PREFIX = ChatColor.WHITE + "[" + ChatColor.GOLD + "A" + ChatColor.WHITE + "]";
+    public static final String PREFIX = ChatColor.WHITE + "[" + ChatColor.DARK_AQUA + "O" + ChatColor.WHITE + "]";
     public static final String BROADCAST_FORMAT = PREFIX + " {2}";
     public static final String FORMAT =  PREFIX + " {1}" + ChatColor.WHITE + ": {2}";
 
