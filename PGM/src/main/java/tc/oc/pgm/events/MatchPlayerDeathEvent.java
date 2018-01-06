@@ -26,6 +26,7 @@ public class MatchPlayerDeathEvent extends MatchEvent implements MatchPlayerEven
     protected final boolean predicted;
 
     protected int raindrops;
+    protected int experience;
 
     public MatchPlayerDeathEvent(PlayerDeathEvent parent, MatchPlayer victim, DamageInfo damageInfo, boolean predicted) {
         super(checkNotNull(victim).getMatch());
@@ -146,8 +147,16 @@ public class MatchPlayerDeathEvent extends MatchEvent implements MatchPlayerEven
         return raindrops;
     }
 
+    public int getExperience() {
+        return experience;
+    }
+
     public void setRaindrops(int raindrops) {
         this.raindrops = raindrops;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
     }
 
     @Override

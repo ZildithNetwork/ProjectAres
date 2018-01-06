@@ -36,6 +36,11 @@ public class NullUserService extends NullModelService<User, UserDoc.Partial> imp
     }
 
     @Override
+    public ListenableFuture<UserUpdateResponse> creditExperience(UserId userId, CreditExperienceRequest request) {
+        return Futures.immediateFuture(UserUpdateResponse.FAILURE);
+    }
+
+    @Override
     public ListenableFuture<User> purchaseGizmo(UserId userId, PurchaseGizmoRequest request) {
         return Futures.immediateFailedFuture(new NotFound());
     }

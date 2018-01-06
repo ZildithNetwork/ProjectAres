@@ -18,6 +18,7 @@ import tc.oc.api.queue.Exchange;
 import tc.oc.api.users.ChangeClassRequest;
 import tc.oc.api.users.ChangeSettingRequest;
 import tc.oc.api.users.CreditRaindropsRequest;
+import tc.oc.api.users.CreditExperienceRequest;
 import tc.oc.api.users.LoginRequest;
 import tc.oc.api.users.LoginResponse;
 import tc.oc.api.users.LogoutRequest;
@@ -84,6 +85,11 @@ class OCNUserService extends HttpModelService<User, UserDoc.Partial> implements 
     @Override
     public ListenableFuture<UserUpdateResponse> creditRaindrops(UserId userId, CreditRaindropsRequest request) {
         return handleUserUpdate(client().post(memberUri(userId, "credit_raindrops"), request, UserUpdateResponse.class, HttpOption.INFINITE_RETRY));
+    }
+
+    @Override
+    public ListenableFuture<UserUpdateResponse> creditExperience(UserId userId, CreditExperienceRequest request) {
+        return handleUserUpdate(client().post(memberUri(userId, "credit_experience"), request, UserUpdateResponse.class, HttpOption.INFINITE_RETRY));
     }
 
     @Override

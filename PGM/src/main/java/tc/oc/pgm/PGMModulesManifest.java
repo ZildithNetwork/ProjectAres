@@ -18,6 +18,7 @@ import tc.oc.pgm.physics.PlayerPhysicsManifest;
 import tc.oc.pgm.picker.PickerManifest;
 import tc.oc.pgm.playerstats.StatsManifest;
 import tc.oc.pgm.raindrops.RaindropManifest;
+import tc.oc.pgm.experience.ExperienceManifest;
 import tc.oc.pgm.regions.RegionManifest;
 import tc.oc.pgm.scoreboard.ScoreboardManifest;
 import tc.oc.pgm.structure.StructureManifest;
@@ -61,6 +62,7 @@ public class PGMModulesManifest extends HybridManifest {
         install(new BroadcastManifest());
         install(new StatsManifest());
         install(new RaindropManifest());
+        install(new ExperienceManifest());
         install(new ObjectiveModeManifest());
     }
 }

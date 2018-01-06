@@ -21,6 +21,7 @@ import tc.oc.api.model.NullModelService;
 import tc.oc.api.users.ChangeClassRequest;
 import tc.oc.api.users.ChangeSettingRequest;
 import tc.oc.api.users.CreditRaindropsRequest;
+import tc.oc.api.users.CreditExperienceRequest;
 import tc.oc.api.users.LoginRequest;
 import tc.oc.api.users.LoginResponse;
 import tc.oc.api.users.LogoutRequest;
@@ -120,6 +121,21 @@ class LocalUserService extends NullModelService<User, UserDoc.Partial> implement
 
     @Override
     public ListenableFuture<UserUpdateResponse> creditRaindrops(UserId userId, CreditRaindropsRequest request) {
+        return FutureUtils.mapSync(find(userId), user -> new UserUpdateResponse() {
+            @Override
+            public boolean success() {
+                return true;
+            }
+
+            @Override
+            public User user() {
+                return user;
+            }
+        });
+    }
+
+    @Override
+    public ListenableFuture<UserUpdateResponse> creditExperience(UserId userId, CreditExperienceRequest request) {
         return FutureUtils.mapSync(find(userId), user -> new UserUpdateResponse() {
             @Override
             public boolean success() {

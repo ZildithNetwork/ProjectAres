@@ -63,6 +63,7 @@ import tc.oc.commons.bukkit.nick.PlayerOrder;
 import tc.oc.commons.bukkit.nick.PlayerOrderCache;
 import tc.oc.commons.bukkit.punishment.PunishmentManifest;
 import tc.oc.commons.bukkit.raindrops.RaindropManifest;
+import tc.oc.commons.bukkit.experience.ExperienceManifest;
 import tc.oc.commons.bukkit.report.ReportAnnouncer;
 import tc.oc.commons.bukkit.report.ReportCommands;
 import tc.oc.commons.bukkit.respack.ResourcePackCommands;
@@ -116,6 +117,7 @@ public final class CommonsBukkitManifest extends HybridManifest {
         install(new LocalizationManifest());
         install(new NavigatorManifest());
         install(new RaindropManifest());
+        install(new ExperienceManifest());
         install(new PunishmentManifest());
 
         // These are already bound as facets, so they only need to be exposed
@@ -201,7 +203,7 @@ public final class CommonsBukkitManifest extends HybridManifest {
         facets.register(BukkitPlayerReporter.class);
         facets.register(LatencyReporter.class);
 
-        // Hall of shame
+        // Hall of shame ;(
         requestStaticInjection(ComponentRenderers.class);
         requestStaticInjection(PlayerTabEntry.class);
         requestStaticInjection(TabRender.class);

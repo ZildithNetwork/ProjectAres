@@ -25,6 +25,12 @@ public interface UserService extends ModelService<User, UserDoc.Partial> {
 
     ListenableFuture<UserUpdateResponse> creditRaindrops(UserId userId, CreditRaindropsRequest request);
 
+    default ListenableFuture<UserUpdateResponse> creditExperience(UserId userId, int experience) {
+        return creditExperience(userId, () -> experience);
+    }
+
+    ListenableFuture<UserUpdateResponse> creditExperience(UserId userId, CreditExperienceRequest request);
+
     ListenableFuture<User> purchaseGizmo(UserId userId, PurchaseGizmoRequest request);
 
     <T extends UserDoc.Partial> ListenableFuture<User> update(UserId userId, T update);

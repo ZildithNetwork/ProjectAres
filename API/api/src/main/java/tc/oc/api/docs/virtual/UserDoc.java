@@ -82,6 +82,7 @@ public interface UserDoc {
     @Serialize
     interface Login extends Identity, Locale, Trophies, License.Complete {
         int raindrops();
+        int experience();
         String mc_last_sign_in_ip();
         @Nullable Date trial_expires_at();
         Map<String, Map<String, Boolean>> mc_permissions_by_realm();
