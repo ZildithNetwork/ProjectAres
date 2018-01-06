@@ -36,9 +36,9 @@ public class RaindropCommands implements Commands {
     }
 
     @Command(
-        aliases = {"raindrops", "rds"},
+        aliases = {"zoins", "zns"},
         usage = "[player]",
-        desc = "Shows the amount of raindrops that you have",
+        desc = "Shows the amount of zoins that you have",
         min = 0,
         max = 1
     )

@@ -18,7 +18,7 @@ import tc.oc.pgm.teams.TeamMatchModule;
 @Singleton
 public class JoinCommands implements Commands {
     @Command(
-        aliases = { "join" },
+        aliases = { "join", "play" },
         desc = "Joins the current match",
         usage = "[team] - defaults to random",
         flags = "f",
@@ -52,7 +52,7 @@ public class JoinCommands implements Commands {
     public static final String OBSERVE_COMMAND = "observe";
 
     @Command(
-        aliases = { OBSERVE_COMMAND, "obs", "spectate" },
+        aliases = { OBSERVE_COMMAND, "obs", "spectate", "leave" },
         desc = "Observe the current match",
         min = 0,
         max = 0

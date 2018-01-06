@@ -84,7 +84,7 @@ public class ServerCommands implements Commands {
     }
 
     @Command(
-        aliases = { "server", "srv" },
+        aliases = { "server", "srv", "sv" },
         desc = "Show the name of this server or connect to a different server",
         usage = "[-d datacenter] [name]",
         flags = "bd:"
