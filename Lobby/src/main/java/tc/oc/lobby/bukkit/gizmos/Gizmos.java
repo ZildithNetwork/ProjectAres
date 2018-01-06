@@ -20,7 +20,8 @@ import tc.oc.lobby.bukkit.LobbyTranslations;
 import tc.oc.lobby.bukkit.gizmos.chicken.ChickenGizmo;
 import tc.oc.lobby.bukkit.gizmos.empty.EmptyGizmo;
 import tc.oc.lobby.bukkit.gizmos.gun.GunGizmo;
-import tc.oc.lobby.bukkit.gizmos.launcher.LauncherGizmo;
+import tc.oc.lobby.bukkit.gizmos.launcher.UnitedStatesGizmo;
+import tc.oc.lobby.bukkit.gizmos.launcher.MexicoGizmo;
 import tc.oc.lobby.bukkit.gizmos.popper.PopperGizmo;
 import tc.oc.lobby.bukkit.gizmos.rocket.RocketGizmo;
 
@@ -30,9 +31,9 @@ public class Gizmos implements Listener {
     public static RocketGizmo rocketGizmo = new RocketGizmo("Player Rocketer", ChatColor.RED.toString(), "Hide players by launching them into colorful fireworks", Material.FIREWORK, 5000);
     public static GunGizmo gunGizmo = new GunGizmo("Raindrop Gun", ChatColor.AQUA.toString(), "Gift raindrops with a punch :D", Material.IRON_HOE, 7500);
     public static ChickenGizmo chickenGizmo = new ChickenGizmo("Chickenifier5000", ChatColor.YELLOW.toString(), "bok B'GAWK", Material.EGG, 10000);
-    public static LauncherGizmo launcherGizmo = new LauncherGizmo("Murica", ChatColor.RED.toString(), "Show your pride!", Material.FEATHER, 17760);
+    public static UnitedStatesGizmo UnitedStatesGizmo = new UnitedStatesGizmo("United States", ChatColor.RED.toString(), "Fireworks to the flag of the United States", Material.WOOL, 17760);
 
-    public static final List<Gizmo> gizmos = Lists.newArrayList(emptyGizmo, popperGizmo, rocketGizmo, gunGizmo, chickenGizmo, launcherGizmo);
+    public static final List<Gizmo> gizmos = Lists.newArrayList(emptyGizmo, popperGizmo, rocketGizmo, gunGizmo, chickenGizmo, UnitedStatesGizmo, MexicoGizmo);
     public static Map<Player, Gizmo> gizmoMap = Maps.newHashMap();
     public static Map<Player, Gizmo> purchasingMap = Maps.newHashMap();
 
