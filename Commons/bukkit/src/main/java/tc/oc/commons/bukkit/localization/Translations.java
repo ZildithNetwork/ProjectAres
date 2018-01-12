@@ -36,6 +36,8 @@ public class Translations extends PluginTranslations {
             new TranslationSet("developerchat.DeveloperChatMessages"),
             new TranslationSet("officialchat.OfficialChatErrors"),
             new TranslationSet("officialchat.OfficialChatMessages"),
+            new TranslationSet("premiumchat.PremiumChatErrors"),
+            new TranslationSet("premiumchat.PremiumChatMessages"),
             new TranslationSet("commons.Commons"),
             new TranslationSet("pgm.PGMErrors"),
             new TranslationSet("pgm.PGMMessages"),

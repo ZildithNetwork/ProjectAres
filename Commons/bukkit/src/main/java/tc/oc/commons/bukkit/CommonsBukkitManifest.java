@@ -16,6 +16,7 @@ import tc.oc.commons.bukkit.channels.AdminChatManifest;
 import tc.oc.commons.bukkit.channels.DeveloperChatManifest;
 import tc.oc.commons.bukkit.channels.ModChatManifest;
 import tc.oc.commons.bukkit.channels.OfficialChatManifest;
+import tc.oc.commons.bukkit.channels.PremiumChatManifest;
 import tc.oc.commons.bukkit.chat.ComponentRenderContext;
 import tc.oc.commons.bukkit.chat.ComponentRendererRegistry;
 import tc.oc.commons.bukkit.chat.ComponentRenderers;
@@ -113,6 +114,7 @@ public final class CommonsBukkitManifest extends HybridManifest {
         install(new DeveloperChatManifest());
         install(new ModChatManifest());
         install(new OfficialChatManifest());
+        install(new PremiumChatManifest());
         install(new BroadcastManifest());
         install(new LocalizationManifest());
         install(new NavigatorManifest());
