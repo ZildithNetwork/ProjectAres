@@ -156,7 +156,7 @@ public class ExperienceUtil {
     private static BaseComponent experienceMessage(int count, int multiplier, @Nullable BaseComponent reason) {
         Component message = new Component(ChatColor.GRAY);
         message.extra(new Component((count > 0 ? "+" : "") + count, ChatColor.GREEN, ChatColor.BOLD),
-                      new Component(" Experience", ChatColor.AQUA));
+                      new Component(" XP", ChatColor.GREEN));
         if(multiplier != 100) {
             message.extra(new Component(" | ", ChatColor.DARK_PURPLE),
                           new Component((multiplier / 100f) + "x", ChatColor.GOLD, ChatColor.ITALIC));
