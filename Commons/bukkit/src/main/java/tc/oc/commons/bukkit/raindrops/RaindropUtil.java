@@ -148,7 +148,7 @@ public class RaindropUtil {
         NMSHacks.showFakeItems(plugin,
                                player,
                                player.getLocation().add(0, 2, 0),
-                               new ItemStack(Material.GHAST_TEAR),
+                               new ItemStack(Material.GOLD_NUGGET),
                                count,
                                Duration.ofSeconds(3));
     }

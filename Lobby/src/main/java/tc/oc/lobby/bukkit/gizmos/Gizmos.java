@@ -43,7 +43,7 @@ public class Gizmos implements Listener {
         if(event.getAction() == Action.PHYSICAL) return;
 
         Player player = event.getPlayer();
-        if(player.getItemInHand().getType() == Material.GHAST_TEAR) {
+        if(player.getItemInHand().getType() == Material.GOLD_NUGGET) {
             GizmoUtils.openMenu(event.getPlayer());
             purchasingMap.put(event.getPlayer(), null);
         }

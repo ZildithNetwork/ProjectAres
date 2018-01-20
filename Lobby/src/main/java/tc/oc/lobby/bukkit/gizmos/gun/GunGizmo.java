@@ -82,7 +82,7 @@ public class GunGizmo extends Gizmo implements Listener {
                 if(success) {
                     Vector velocity = player.getLocation().getDirection().multiply(1.75D);
 
-                    Item item = player.getWorld().dropItem(event.getPlayer().getEyeLocation(), new ItemStack(Material.GHAST_TEAR));
+                    Item item = player.getWorld().dropItem(event.getPlayer().getEyeLocation(), new ItemStack(Material.GOLD_NUGGET));
                     item.setVelocity(velocity);
                     item.setTicksLived((5 * 60 * 20) - (5 * 20)); // 5 minutes - 5 seconds
                     items.put(item, player.getUniqueId());
@@ -120,7 +120,7 @@ public class GunGizmo extends Gizmo implements Listener {
         @Override
         public void run() {
             for(Item item : Bukkit.getWorlds().get(0).getEntitiesByClass(Item.class)) {
-                if(item.getItemStack().getType() != Material.GHAST_TEAR) continue;
+                if(item.getItemStack().getType() != Material.GOLD_NUGGET) continue;
                 UUID skip = Gizmos.gunGizmo.items.get(item);
 
                 for(Entity entity : item.getNearbyEntities(0.5d, 0.5d, 0.5d)) {

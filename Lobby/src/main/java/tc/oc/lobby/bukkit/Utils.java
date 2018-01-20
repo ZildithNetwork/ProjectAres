@@ -60,7 +60,7 @@ public class Utils {
     }
 
     public static ItemStack getGhastTear(Player player, int count) {
-        ItemStack raindrops = new ItemStack(Material.GHAST_TEAR);
+        ItemStack raindrops = new ItemStack(Material.GOLD_NUGGET);
         ItemMeta meta = raindrops.getItemMeta();
         meta.setDisplayName(ChatColor.AQUA + "Zoins" + ChatColor.DARK_PURPLE + " | " + ChatColor.WHITE + String.format("%,d", count));
         raindrops.setItemMeta(meta);
@@ -69,7 +69,7 @@ public class Utils {
     }
 
     public static void giveGhastTear(Player player, int count) {
-        player.getInventory().remove(Material.GHAST_TEAR);
+        player.getInventory().remove(Material.GOLD_NUGGET);
         player.getInventory().setItem(4, getGhastTear(player, count));
     }
 }
