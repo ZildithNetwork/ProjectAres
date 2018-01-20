@@ -65,6 +65,7 @@ import tc.oc.commons.bukkit.nick.PlayerOrderCache;
 import tc.oc.commons.bukkit.punishment.PunishmentManifest;
 import tc.oc.commons.bukkit.raindrops.RaindropManifest;
 import tc.oc.commons.bukkit.experience.ExperienceManifest;
+import tc.oc.commons.bukkit.prestiges.PrestigeManifest;
 import tc.oc.commons.bukkit.report.ReportAnnouncer;
 import tc.oc.commons.bukkit.report.ReportCommands;
 import tc.oc.commons.bukkit.respack.ResourcePackCommands;
@@ -120,6 +121,7 @@ public final class CommonsBukkitManifest extends HybridManifest {
         install(new NavigatorManifest());
         install(new RaindropManifest());
         install(new ExperienceManifest());
+        install(new PrestigeManifest());
         install(new PunishmentManifest());
 
         // These are already bound as facets, so they only need to be exposed
