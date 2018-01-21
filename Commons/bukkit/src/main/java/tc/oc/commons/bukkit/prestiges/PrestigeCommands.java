@@ -17,7 +17,7 @@ import tc.oc.commons.bukkit.nick.IdentityProvider;
 import tc.oc.commons.core.chat.Component;
 import tc.oc.commons.core.commands.CommandFutureCallback;
 import tc.oc.commons.core.commands.Commands;
-import tc.oc.commons.bukkit.prestiges.PrestigeUtil;
+//import tc.oc.commons.bukkit.prestiges.PrestigeUtil;
 
 public class PrestigeCommands implements Commands {
 
@@ -42,7 +42,7 @@ public class PrestigeCommands implements Commands {
                 max = 0
     )
     public void prestige(final CommandContext args, final CommandSender sender) throws CommandException {
-        executor.callback(
+        /*executor.callback(
                 userFinder.findUser(sender, args, 0, UserFinder.Default.SENDER),
                 CommandFutureCallback.onSuccess(sender, args -> {
                     final boolean self = sender instanceof Player && ((Player) sender).getUniqueId().equals(result.user.uuid());
@@ -51,7 +51,8 @@ public class PrestigeCommands implements Commands {
                     raindrops = sender.user.raindrops();
 
 
-                }
-        );
+                })
+        );*/
+        return;
     }
 }

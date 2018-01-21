@@ -30,7 +30,7 @@ public class FreezeCommands implements Commands {
     }
 
     @Command(
-        aliases = { "freeze", "f" },
+        aliases = { "freeze", "f", "arrest" },
         usage = "<player>",
         desc = "Freeze a player",
         min = 1,

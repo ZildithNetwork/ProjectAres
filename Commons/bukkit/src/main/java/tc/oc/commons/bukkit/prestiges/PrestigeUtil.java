@@ -1,4 +1,4 @@
-package oc.tc.commons.bukkit.prestiges.PrestigeUtil;
+package oc.tc.commons.bukkit.prestiges;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -23,6 +23,8 @@ import tc.oc.commons.core.chat.Component;
 
 public class PrestigeUtil {
     private static BaseComponent prestigeMessage(int level) {
-        
+        Component message = new Component(ChatColor.GRAY);
+        message.extra(new Component("Prestiges aren't enabled yet!", ChatColor.RED, ChatColor.BOLD));
+        return message;
     }
 }
