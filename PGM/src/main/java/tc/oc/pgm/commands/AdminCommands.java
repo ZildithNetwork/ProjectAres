@@ -14,6 +14,7 @@ import java.time.Duration;
 import org.bukkit.entity.Player;
 import tc.oc.api.docs.virtual.ServerDoc;
 import tc.oc.commons.core.commands.Commands;
+import tc.oc.commons.bukkit.channels.DeveloperChannel;
 import tc.oc.commons.core.commands.TranslatableCommandException;
 import tc.oc.commons.core.restart.RestartManager;
 import tc.oc.commons.core.util.TimeUtils;
@@ -32,10 +33,13 @@ import tc.oc.pgm.rotation.RotationState;
 public class AdminCommands implements Commands {
     
     private final RestartManager restartManager;
+    private final DeveloperChannel developerChannel;
     private final RestartListener restartListener;
 
+    @Inject AdminCommands(RestartManager restartManager, RestartListener restartListener, DeveloperChannel developerChannel) {
         this.restartManager = restartManager;
         this.restartListener = restartListener;
+        this.developerChannel = DeveloperChannel;
     }
 
     @Command(
@@ -143,6 +147,7 @@ public class AdminCommands implements Commands {
         }
 
         if(sender instanceof Player){
+            developerChannel.broadcast(CommandUtils.senderToMatchPlayer(sender).getDisplayName() + ChatColor.DARK_AQUA + " has set " + ChatColor.GOLD + mm.getNextMap().getInfo().name + ChatColor.DARK_AQUA + " as the next map");
         }else {
             sender.sendMessage(ChatColor.DARK_AQUA + PGMTranslations.get().t("command.admin.set.success", sender, ChatColor.GOLD + mm.getNextMap().getInfo().name + ChatColor.DARK_AQUA));
         }
