@@ -11,6 +11,7 @@ import com.sk89q.minecraft.util.commands.Console;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import java.time.Duration;
+import org.bukkit.entity.Player;
 import tc.oc.api.docs.virtual.ServerDoc;
 import tc.oc.commons.core.commands.Commands;
 import tc.oc.commons.core.commands.TranslatableCommandException;
@@ -33,7 +34,6 @@ public class AdminCommands implements Commands {
     private final RestartManager restartManager;
     private final RestartListener restartListener;
 
-    @Inject AdminCommands(RestartManager restartManager, RestartListener restartListener) {
         this.restartManager = restartManager;
         this.restartListener = restartListener;
     }
@@ -141,7 +141,11 @@ public class AdminCommands implements Commands {
             restartManager.cancelRestart();
             sender.sendMessage(ChatColor.GREEN + PGMTranslations.get().t("command.admin.cancelRestart.restartUnqueued", sender));
         }
-        sender.sendMessage(ChatColor.DARK_PURPLE + PGMTranslations.get().t("command.admin.set.success", sender, ChatColor.GOLD + mm.getNextMap().getInfo().name + ChatColor.DARK_PURPLE));
+
+        if(sender instanceof Player){
+        }else {
+            sender.sendMessage(ChatColor.DARK_AQUA + PGMTranslations.get().t("command.admin.set.success", sender, ChatColor.GOLD + mm.getNextMap().getInfo().name + ChatColor.DARK_AQUA));
+        }
         return null;
     }
 
