@@ -45,6 +45,8 @@ public class FlairRenderer implements PartialNameRenderer {
                    .stream()
                    .filter(flair -> realms.contains(flair.realm))
                    .map(flair -> flair.text)
+                   .sorted((flair1, flair2) -> flair1.priority - flair2.priority)
+                   .limit(1)
                    .reduce("", String::concat);
     }
 
