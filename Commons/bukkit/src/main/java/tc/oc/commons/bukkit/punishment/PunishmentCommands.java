@@ -143,7 +143,7 @@ public class PunishmentCommands implements Commands {
     }
 
     @Command(
-        aliases = { "pb", "permaban" },
+        aliases = { "pb", "permaban", "delete" },
         flags = "aso",
         usage = "<player> <reason>",
         desc = "Permanently ban a player for a reason.",

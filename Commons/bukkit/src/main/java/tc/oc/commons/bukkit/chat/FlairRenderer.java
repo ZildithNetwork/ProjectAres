@@ -1,6 +1,7 @@
 package tc.oc.commons.bukkit.chat;
 
 import java.util.Set;
+import java.util.stream.Stream;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -29,6 +30,10 @@ public class FlairRenderer implements PartialNameRenderer {
     @Override
     public String getLegacyName(Identity identity, NameType type) {
         if(!(type.style.contains(NameFlag.FLAIR) && type.reveal)) return "";
+        return getFlairs(identity).reduce("", String::concat);
+    }
+
+    public Stream<String> getFlairs(Identity identity) {
 
         final UserDoc.Identity user;
         if(identity.getPlayerId() instanceof UserDoc.Identity) {
@@ -37,17 +42,16 @@ public class FlairRenderer implements PartialNameRenderer {
         } else {
             user = userStore.tryUser(identity.getPlayerId());
         }
-        if(user == null) return "";
+        if(user == null) return Stream.empty();
 
         final Set<String> realms = ImmutableSet.copyOf(minecraftService.getLocalServer().realms());
 
         return user.minecraft_flair()
                    .stream()
-                   .filter(flair -> realms.contains(flair.realm))
-                   .map(flair -> flair.text)
+                   .filter(flair -> realms.contains(flair.realm) && flair.text != null && !flair.text.isEmpty())
                    .sorted((flair1, flair2) -> flair1.priority - flair2.priority)
                    .limit(1)
-                   .reduce("", String::concat);
+                   .map(flair -> flair.text);
     }
 
     @Override
