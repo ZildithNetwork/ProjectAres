@@ -13,7 +13,7 @@ import tc.oc.commons.core.util.ExceptionUtils;
 public class Links {
     private Links() {}
 
-    public static final String HOST = "localhost"; // TODO: configurable
+    public static final String HOST = "zildith.net"; // TODO: configurable
 
     public static URI homeUri(String path) throws URISyntaxException {
         return new URI("http", HOST, path, null);
