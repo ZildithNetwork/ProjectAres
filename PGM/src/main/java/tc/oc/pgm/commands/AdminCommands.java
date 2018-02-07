@@ -39,7 +39,7 @@ public class AdminCommands implements Commands {
     @Inject AdminCommands(RestartManager restartManager, RestartListener restartListener, DeveloperChannel developerChannel) {
         this.restartManager = restartManager;
         this.restartListener = restartListener;
-        this.developerChannel = DeveloperChannel;
+        this.developerChannel = developerChannel;
     }
 
     @Command(
