@@ -21,7 +21,6 @@ import tc.oc.lobby.bukkit.gizmos.chicken.ChickenGizmo;
 import tc.oc.lobby.bukkit.gizmos.empty.EmptyGizmo;
 import tc.oc.lobby.bukkit.gizmos.gun.GunGizmo;
 import tc.oc.lobby.bukkit.gizmos.launcher.UnitedStatesGizmo;
-import tc.oc.lobby.bukkit.gizmos.launcher.MexicoGizmo;
 import tc.oc.lobby.bukkit.gizmos.popper.PopperGizmo;
 import tc.oc.lobby.bukkit.gizmos.rocket.RocketGizmo;
 
@@ -33,7 +32,7 @@ public class Gizmos implements Listener {
     public static ChickenGizmo chickenGizmo = new ChickenGizmo("Chickenifier5000", ChatColor.YELLOW.toString(), "bok B'GAWK", Material.EGG, 10000);
     public static UnitedStatesGizmo UnitedStatesGizmo = new UnitedStatesGizmo("United States", ChatColor.RED.toString(), "Fireworks to the flag of the United States", Material.WOOL, 17760);
     
-    public static final List<Gizmo> gizmos = Lists.newArrayList(emptyGizmo, popperGizmo, rocketGizmo, gunGizmo, chickenGizmo, UnitedStatesGizmo, MexicoGizmo);
+    public static final List<Gizmo> gizmos = Lists.newArrayList(emptyGizmo, popperGizmo, rocketGizmo, gunGizmo, chickenGizmo, UnitedStatesGizmo);
     public static Map<Player, Gizmo> gizmoMap = Maps.newHashMap();
     public static Map<Player, Gizmo> purchasingMap = Maps.newHashMap();
 
