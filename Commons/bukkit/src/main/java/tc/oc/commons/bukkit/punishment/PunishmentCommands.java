@@ -192,7 +192,7 @@ public class PunishmentCommands implements Commands {
     }
 
     @Command(
-        aliases = { "l", "lookup" },
+        aliases = { "l", "lookup", "history" },
         usage = "<player>",
         desc = "Lookup previous punishments for player.",
         min = 0,
