@@ -19,10 +19,6 @@ public class Links {
         return new URI("http", HOST, path, null);
     }
 
-    public static URI shopUri() throws URISyntaxException {
-        return new URI("http", SHOP_HOST, null, null);
-    }
-
     public static URI homeUriSafe(String path) {
         return ExceptionUtils.propagate(() -> homeUri(path));
     }
@@ -43,12 +39,8 @@ public class Links {
         return homeLinkSafe("/");
     }
 
-    public static BaseComponent shopLink(boolean compact) throws URISyntaxException {
-        return new LinkComponent(shopUri(), compact);
-    }
-
     public static BaseComponent shopLink() {
-        return ExceptionUtils.propagate(() -> shopLink(true));
+        return homeLinkSafe("/shop");
     }
 
     public static BaseComponent appealLink() {
@@ -61,9 +53,9 @@ public class Links {
 
     public static BaseComponent shopPlug(String perk, Object... with) {
         return new Component(ChatColor.LIGHT_PURPLE)
-            .extra(new TranslatableComponent(perk, with))
-            .extra(new Component(" "))
-            .extra(shopLink());
+                .extra(new TranslatableComponent(perk, with))
+                .extra(new Component(" "))
+                .extra(shopLink());
     }
 
     public static URI profileUri(String username) {

@@ -104,10 +104,6 @@ public class PunishmentEnforcer implements Enableable, MessageListener {
                 playerServerChanger.kickPlayer(punished, punishmentFormatter.screen(punishment, punished));
                 break;
         }
-
-        if(!punishment.off_record()) {
-            punishmentService.update(punishment._id(), (PunishmentDoc.Enforce) () -> true);
-        }
     }
 
     private void announce(Punishment punishment) {
@@ -148,10 +144,7 @@ public class PunishmentEnforcer implements Enableable, MessageListener {
     }
     
     private boolean viewByRecord(CommandSender sender, Punishment punishment) {
-        if(punishment.off_record()) {
-            return localServer._id().equals(punishment.server_id());   
-        }
-        return true;
+        return localServer._id().equals(punishment.server_id());
     }
 
     private boolean viewByType(CommandSender sender, Punishment punishment) {

@@ -10,8 +10,7 @@ import org.bukkit.Skin;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
-import tc.oc.commons.bukkit.flairs.FlairConfiguration;
-import tc.oc.commons.bukkit.flairs.FlairRenderer;
+import tc.oc.commons.bukkit.chat.FlairRenderer;
 import tc.oc.commons.bukkit.chat.FullNameRenderer;
 import tc.oc.commons.bukkit.chat.NameStyle;
 import tc.oc.commons.bukkit.chat.NameType;
@@ -31,7 +30,7 @@ public class PlayerAppearanceChanger {
     private static final NameType NICKNAME_TYPE = new NameType(NameStyle.VERBOSE, true, false, false, false, false);
 
     private final IdentityProvider identityProvider;
-    private final FlairConfiguration flairConfig;
+    private final NicknameConfiguration config;
     private final Scheduler scheduler;
     private final FullNameRenderer nameRenderer;
     private final UsernameRenderer usernameRenderer;
@@ -40,9 +39,9 @@ public class PlayerAppearanceChanger {
     private final Cache<Skin, Integer> skinPool;
 
     @Inject
-    PlayerAppearanceChanger(IdentityProvider identityProvider, FlairConfiguration flairConfig, Scheduler scheduler, FullNameRenderer nameRenderer, UsernameRenderer usernameRenderer, FlairRenderer flairRenderer) {
+    PlayerAppearanceChanger(IdentityProvider identityProvider, NicknameConfiguration config, Scheduler scheduler, FullNameRenderer nameRenderer, UsernameRenderer usernameRenderer, FlairRenderer flairRenderer) {
         this.identityProvider = identityProvider;
-        this.flairConfig = flairConfig;
+        this.config = config;
         this.scheduler = scheduler;
         this.nameRenderer = nameRenderer;
         this.usernameRenderer = usernameRenderer;
@@ -74,7 +73,7 @@ public class PlayerAppearanceChanger {
             refreshFakeNameAndSkin(player, identity, legacyNickname, viewer);
         }
 
-        if(flairConfig.overheadFlair()) {
+        if(config.overheadFlair()) {
             String prefix = usernameRenderer.getColor(identity, REAL_NAME_TYPE).toString();
             if(identity.getNickname() == null) {
                 prefix = flairRenderer.getLegacyName(identity, REAL_NAME_TYPE) + prefix;
@@ -97,9 +96,7 @@ public class PlayerAppearanceChanger {
      * Release any resources being used to maintain the given player's appearance
      */
     public void cleanupAfterPlayer(Player player) {
-        skinPool.put(player.getRealSkin(), flairRenderer.getNumberOfFlairs(identityProvider.createIdentity(player)));
-
-        if(flairConfig.overheadFlair()) {
+        if(config.overheadFlair()) {
             // Remove players from their "overhead flair team" on quit
             final Team team = player.getServer().getScoreboardManager().getMainScoreboard().getPlayerTeam(player);
             if(team != null) {

@@ -11,7 +11,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import tc.oc.commons.bukkit.tokens.TokenUtil;
 import tc.oc.commons.core.commands.Commands;
 import tc.oc.commons.core.formatting.StringUtils;
 import tc.oc.commons.core.restart.RestartManager;
@@ -26,8 +25,6 @@ import tc.oc.pgm.polls.PollCustom;
 import tc.oc.pgm.polls.PollEndReason;
 import tc.oc.pgm.polls.PollKick;
 import tc.oc.pgm.polls.PollManager;
-import tc.oc.pgm.polls.PollMutation;
-import tc.oc.pgm.polls.PollNextMap;
 
 import javax.inject.Inject;
 
@@ -119,89 +116,6 @@ public class PollCommands implements Commands {
             } else {
                 startPoll(new PollKick(PGM.getPollManager(), Bukkit.getServer(), initiator.getName(), player.getName()));
             }
-        }
-
-        @Command(
-            aliases = {"next"},
-            desc = "Start a poll to change the next map.",
-            usage = "[map name]",
-            min = 1,
-            max = -1
-        )
-        @CommandPermissions("poll.next")
-        public static List<String> pollNext(CommandContext args, CommandSender sender) throws CommandException {
-            final String mapName = args.argsLength() > 0 ? args.getJoinedStrings(0) : "";
-            if(args.getSuggestionContext() != null) {
-                return CommandUtils.completeMapName(mapName);
-            }
-
-            if (!Config.Poll.enabled()) {
-                throw newCommandException(sender, new TranslatableComponent("poll.disabled"));
-            }
-
-            if (restartManager.isRestartRequested()) {
-                throw newCommandException(sender, new TranslatableComponent("poll.map.restarting"));
-            }
-            if (PGM.getMatchManager().hasMapSet()) {
-                throw newCommandException(sender, new TranslatableComponent("poll.map.alreadyset"));
-            }
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                if (TokenUtil.getUser(player).maptokens() < 1) {
-                    throw newCommandException(sender, new TranslatableComponent("tokens.map.fail"));
-                }
-            }
-
-            Player initiator = tc.oc.commons.bukkit.commands.CommandUtils.senderToPlayer(sender);
-
-            PGMMap nextMap = CommandUtils.getMap(args.getJoinedStrings(0), sender);
-
-            if (!PGM.getPollableMaps().isAllowed(nextMap) && !sender.hasPermission("poll.next.override")) {
-                throw newCommandException(sender, new TranslatableComponent("poll.map.notallowed"));
-            }
-
-            if (PGM.get().getServer().getOnlinePlayers().size() * 4 / 5 > nextMap.getDocument().max_players() && !sender.hasPermission("poll.next.override")) {
-                throw newCommandException(sender, new TranslatableComponent("poll.map.toomanyplayers"));
-            }
-
-            startPoll(new PollNextMap(PGM.getPollManager(), Bukkit.getServer(), sender,  initiator.getName(), PGM.getMatchManager(), nextMap));
-            return null;
-        }
-
-        @Command(
-                aliases = {"mutation", "mt"},
-                desc = "Start a poll to set a mutation",
-                usage = "[mutation name]",
-                min = 1,
-                max = -1
-        )
-        @CommandPermissions("poll.mutation")
-        public static void pollMutation(CommandContext args, CommandSender sender) throws CommandException {
-
-            if (!Config.Poll.enabled()) {
-                throw newCommandException(sender, new TranslatableComponent("poll.disabled"));
-            }
-
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                if (TokenUtil.getUser(player).mutationtokens() < 1) {
-                    throw newCommandException(sender, new TranslatableComponent("tokens.mutation.fail"));
-                }
-            }
-
-            String mutationString = args.getString(0);
-            MutationMatchModule module = PGM.getMatchManager().getCurrentMatch(sender).getMatchModule(MutationMatchModule.class);
-
-            Mutation mutation = StringUtils.bestFuzzyMatch(mutationString, Sets.newHashSet(Mutation.values()), 0.9);
-            if(mutation == null) {
-                throw newCommandException(sender, new TranslatableComponent("command.mutation.error.find", mutationString));
-            } else if(MutationCommands.getInstance().getMutationQueue().mutations().contains(mutation)) {
-                throw newCommandException(sender, new TranslatableComponent(true ? "command.mutation.error.enabled" : "command.mutation.error.disabled", mutation.getComponent(net.md_5.bungee.api.ChatColor.RED)));
-            } else if (!mutation.isPollable() && !sender.hasPermission("poll.mutation.override")) {
-                throw newCommandException(sender, new TranslatableComponent("command.mutation.error.illegal", mutationString));
-            }
-
-            startPoll(new PollMutation(PGM.getPollManager(), Bukkit.getServer(), sender, mutation, module));
         }
 
         @Command(

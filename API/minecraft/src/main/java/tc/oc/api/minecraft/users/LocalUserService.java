@@ -155,36 +155,6 @@ class LocalUserService extends NullModelService<User, UserDoc.Partial> implement
     }
 
     @Override
-    public ListenableFuture<UserUpdateResponse> creditMaptokens(UserId userId, CreditMaptokensRequest request) {
-        return FutureUtils.mapSync(find(userId), user -> new UserUpdateResponse() {
-            @Override
-            public boolean success() {
-                return true;
-            }
-
-            @Override
-            public User user() {
-                return user;
-            }
-        });
-    }
-
-    @Override
-    public ListenableFuture<UserUpdateResponse> creditMutationtokens(UserId userId, CreditMutationtokensRequest request) {
-        return FutureUtils.mapSync(find(userId), user -> new UserUpdateResponse() {
-            @Override
-            public boolean success() {
-                return true;
-            }
-
-            @Override
-            public User user() {
-                return user;
-            }
-        });
-    }
-
-    @Override
     public <T extends UserDoc.Partial> ListenableFuture<User> update(UserId userId, T update) {
         return find(userId);
     }

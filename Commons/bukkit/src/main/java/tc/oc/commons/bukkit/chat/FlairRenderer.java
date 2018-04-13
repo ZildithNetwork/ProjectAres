@@ -1,7 +1,5 @@
-package tc.oc.commons.bukkit.flairs;
+package tc.oc.commons.bukkit.chat;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Stream;
 import javax.inject.Inject;
@@ -12,9 +10,6 @@ import net.md_5.bungee.api.chat.BaseComponent;
 import tc.oc.api.bukkit.users.BukkitUserStore;
 import tc.oc.api.docs.virtual.UserDoc;
 import tc.oc.api.minecraft.MinecraftService;
-import tc.oc.commons.bukkit.chat.NameFlag;
-import tc.oc.commons.bukkit.chat.NameType;
-import tc.oc.commons.bukkit.chat.PartialNameRenderer;
 import tc.oc.commons.bukkit.nick.Identity;
 import tc.oc.commons.core.chat.Components;
 
@@ -26,12 +21,10 @@ public class FlairRenderer implements PartialNameRenderer {
 
     private final MinecraftService minecraftService;
     private final BukkitUserStore userStore;
-    private final FlairConfiguration flairConfiguration;
 
-    @Inject protected FlairRenderer(MinecraftService minecraftService, BukkitUserStore userStore, FlairConfiguration flairConfiguration) {
+    @Inject protected FlairRenderer(MinecraftService minecraftService, BukkitUserStore userStore) {
         this.minecraftService = minecraftService;
         this.userStore = userStore;
-        this.flairConfiguration = flairConfiguration;
     }
 
     @Override
@@ -41,6 +34,7 @@ public class FlairRenderer implements PartialNameRenderer {
     }
 
     public Stream<String> getFlairs(Identity identity) {
+
         final UserDoc.Identity user;
         if(identity.getPlayerId() instanceof UserDoc.Identity) {
             // Flair may already be stashed inside the Identity
@@ -53,14 +47,15 @@ public class FlairRenderer implements PartialNameRenderer {
         final Set<String> realms = ImmutableSet.copyOf(minecraftService.getLocalServer().realms());
 
         return user.minecraft_flair()
-                   .stream()
-                   .filter(flair -> realms.contains(flair.realm) && flair.text != null && !flair.text.isEmpty())
-                   .sorted((flair1, flair2) -> flair1.priority - flair2.priority)
-                   .limit(1)
-                   .map(flair -> flair.text);
+                .stream()
+                .filter(flair -> realms.contains(flair.realm) && flair.text != null && !flair.text.isEmpty())
+                .sorted((flair1, flair2) -> flair1.priority - flair2.priority)
+                .limit(1)
+                .map(flair -> flair.text);
     }
 
-    public int getNumberOfFlairs(Identity identity) {
-        return (int) getFlairs(identity).count();
+    @Override
+    public BaseComponent getComponentName(Identity identity, NameType type) {
+        return Components.fromLegacyText(getLegacyName(identity, type));
     }
 }

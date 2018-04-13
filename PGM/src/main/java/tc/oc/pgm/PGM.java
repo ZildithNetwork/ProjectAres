@@ -45,7 +45,6 @@ import tc.oc.pgm.polls.PollManager;
 import tc.oc.pgm.start.StartCommands;
 import tc.oc.pgm.tablist.MatchTabManager;
 import tc.oc.pgm.timelimit.TimeLimitCommands;
-import tc.oc.pgm.tokens.gui.MainTokenButton;
 
 import static com.google.common.base.Preconditions.checkState;
 
@@ -173,7 +172,6 @@ public final class PGM extends JavaPlugin {
         // PGM modules are installed on lobby servers, because the bindings will conflict.
         navigatorInterface.setOpenButtonSlot(Slot.Hotbar.forPosition(7));
 
-        new MainTokenButton();
         SettingMenuHelper.initializeSettings();
     }
 

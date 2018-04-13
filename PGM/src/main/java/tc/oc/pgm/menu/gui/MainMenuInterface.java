@@ -7,14 +7,10 @@ import tc.oc.commons.bukkit.chat.PlayerComponent;
 import tc.oc.commons.bukkit.gui.buttons.Button;
 import tc.oc.commons.bukkit.gui.interfaces.ChestInterface;
 import tc.oc.commons.bukkit.stats.StatsUtil;
-import tc.oc.commons.bukkit.tokens.TokenUtil;
 import tc.oc.commons.bukkit.util.Constants;
 import tc.oc.commons.bukkit.util.ItemCreator;
 import tc.oc.commons.core.chat.Component;
 import tc.oc.pgm.PGMTranslations;
-import tc.oc.pgm.tokens.gui.MainTokenButton;
-import tc.oc.pgm.tokens.gui.MutationTokenInterface;
-import tc.oc.pgm.tokens.gui.TokenPurchaseInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,11 +26,6 @@ public class MainMenuInterface extends ChestInterface {
     @Override
     public void updateButtons() {
         List<Button> buttons = new ArrayList<>();
-
-        MainTokenButton button = new MainTokenButton();
-
-        button.setSlot(11);
-        buttons.add(button);
 
         HashMap<String, Double> stats = StatsUtil.getStats(getPlayer());
 

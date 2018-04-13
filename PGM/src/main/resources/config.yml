@@ -69,9 +69,9 @@ enabled: true
 # WARNING: Enabling this will publish your IP address to the world,
 # unless you set server-host to something else.
 announce:
-  enabled: false                  # Announce this server?
-  # server-port: 25565            # Public port - defaults to whatever port is bound at startup
-  # server-host: myserver.com     # Public hostname or IP - if not set, the listing service will use
+  enabled: true                  # Announce this server?
+  server-port: 25565            # Public port - defaults to whatever port is bound at startup
+  server-host: play.zildith.net     # Public hostname or IP - if not set, the listing service will use
                                   # the IP address that the announcement originates from
 
 # Variables accessible by the XML pre-processor
@@ -83,13 +83,6 @@ rotation:
   default-name: default
   initial-wait: 20000
   providers: {}
-
-tokens:
-  enabled: true
-  mvp-chance: 0.03
-  winning-chance: 0.0025
-  losing-chance: 0.001
-  sn-chance: 0.25
 
 mvp:
   enabled: true

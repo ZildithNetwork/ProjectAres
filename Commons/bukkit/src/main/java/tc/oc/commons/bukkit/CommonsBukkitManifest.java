@@ -31,7 +31,6 @@ import tc.oc.commons.bukkit.chat.UserTextComponentRenderer;
 import tc.oc.commons.bukkit.commands.*;
 import tc.oc.commons.bukkit.debug.LeakListener;
 import tc.oc.commons.bukkit.event.targeted.TargetedEventManifest;
-import tc.oc.commons.bukkit.flairs.FlairConfiguration;
 import tc.oc.commons.bukkit.format.ServerFormatter;
 import tc.oc.commons.bukkit.freeze.PlayerFreezer;
 import tc.oc.commons.bukkit.inject.BukkitPluginManifest;
@@ -85,7 +84,6 @@ import tc.oc.commons.bukkit.ticket.TicketBooth;
 import tc.oc.commons.bukkit.ticket.TicketCommands;
 import tc.oc.commons.bukkit.ticket.TicketDisplay;
 import tc.oc.commons.bukkit.ticket.TicketListener;
-import tc.oc.commons.bukkit.tokens.TokenManifest;
 import tc.oc.commons.bukkit.trophies.TrophyCase;
 import tc.oc.commons.bukkit.trophies.TrophyCommands;
 import tc.oc.commons.bukkit.users.JoinMessageManifest;
@@ -122,7 +120,6 @@ public final class CommonsBukkitManifest extends HybridManifest {
         install(new RaindropManifest());
         install(new ExperienceManifest());
         install(new PrestigeManifest());
-        install(new TokenManifest());
         install(new StatsManifest());
         install(new PunishmentManifest());
 
@@ -133,7 +130,6 @@ public final class CommonsBukkitManifest extends HybridManifest {
         expose(TicketDisplay.class);
         expose(TicketListener.class);
 
-        bindAndExpose(FlairConfiguration.class);
         bindAndExpose(PlayerAppearanceChanger.class);
         bindAndExpose(UserFinder.class);
         bindAndExpose(Teleporter.class);

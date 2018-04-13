@@ -6,7 +6,6 @@ import net.md_5.bungee.api.chat.TranslatableComponent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import tc.oc.commons.bukkit.chat.NameStyle;
-import tc.oc.commons.bukkit.tokens.TokenUtil;
 import tc.oc.commons.core.chat.Component;
 import tc.oc.pgm.Config;
 import tc.oc.pgm.destroyable.DestroyableContribution;
@@ -77,23 +76,7 @@ public class HighlightListener implements Listener {
                 final BaseComponent title = new Component(new TranslatableComponent("broadcast.gameOver.mvp"), ChatColor.AQUA, ChatColor.BOLD);
                 Component subtitle;
 
-                if (Config.Token.enabled()) {
-                    if (Math.random() < Config.Token.mvpChance()) {
-                        String appendMe;
-                        if (Math.random() > 0.25) {
-                            TokenUtil.giveMutationTokens(TokenUtil.getUser(bestPlayer.getBukkit()), 1);
-                            appendMe = ChatColor.YELLOW + ": +1 Mutation Token!";
-                        } else {
-                            TokenUtil.giveMapTokens(TokenUtil.getUser(bestPlayer.getBukkit()), 1);
-                            appendMe = ChatColor.YELLOW + ": +1 SetNext Token!";
-                        }
-                        subtitle = new Component(bestPlayer.getDisplayName() + appendMe);
-                    } else {
-                        subtitle = new Component(bestPlayer.getStyledName(NameStyle.COLOR));
-                    }
-                } else {
-                    subtitle = new Component(bestPlayer.getStyledName(NameStyle.COLOR));
-                }
+                subtitle = new Component(bestPlayer.getStyledName(NameStyle.COLOR));
 
                 for (MatchPlayer viewer : event.getMatch().getPlayers()) {
                     scheduler.createDelayedTask(100L, () -> {
