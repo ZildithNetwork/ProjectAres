@@ -85,15 +85,6 @@ public class LocalUserDocument extends SimplePlayerId implements User {
         return 0;
     }
 
-    public int maptokens() {
-        return 0;
-    }
-
-    @Override
-    public int mutationtokens() {
-        return 0;
-    }
-
     @Override
     public String mc_last_sign_in_ip() {
         return ip;
